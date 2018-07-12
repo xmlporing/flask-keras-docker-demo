@@ -39,7 +39,7 @@ def predict():
     # initialise the data dictionary that will be returned 
     # from the view
 
-    data = {'success': False}
+    data = {'status': 'error'}
 
     if flask.request.method == "POST":
         if flask.request.files.get('image'):
@@ -64,7 +64,7 @@ def predict():
                     data['predictions'].append(r)
 
                 # indicate that the request was a success 
-                data['success'] = True
+                data['status'] = 'okay'
     return flask.jsonify(data)
             
 if __name__=="__main__":
